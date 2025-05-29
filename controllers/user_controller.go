@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -12,4 +13,7 @@ func ServeHome(w http.ResponseWriter, r *http.Request) {
 
 func GetUser(w http.ResponseWriter, r *http.Request) {
 
+	userId := r.URL.Query().Get("id")
+	log.Printf("about to process %s", userId)
+	w.Write([]byte(fmt.Sprintf("<h1>This is the user-id: %s</h1>", userId)))
 }
