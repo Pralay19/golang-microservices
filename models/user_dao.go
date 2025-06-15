@@ -22,9 +22,14 @@ var (
 			Email:     "youremail@hotmail.com",
 		},
 	}
+
+	UserDao userDao
 )
 
-func GetUser(userId int64) (*User, *utils.ApplicationError) {
+type userDao struct {
+}
+
+func (u *userDao) GetUser(userId int64) (*User, *utils.ApplicationError) {
 	user := users[userId]
 	if user == nil {
 		// return nil, errors.New(fmt.Sprintf("user %v was not found", userId)) - this was shown to be used but the below was recommended by Copilot.

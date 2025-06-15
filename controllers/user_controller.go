@@ -36,7 +36,7 @@ func GetUser(w http.ResponseWriter, r *http.Request) {
 	// w.Write([]byte(fmt.Sprintf("<h1>This is the user-id: %s</h1>", userId)))
 
 	// now we need to send this user-id to a service inorder to work with the database
-	user, userErr := services.GetUser(userId)
+	user, userErr := services.UsersService.GetUser(userId)
 	if userErr != nil {
 		// log.Fatal(err)
 		jsonVal, _ := json.Marshal(userErr)

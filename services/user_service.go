@@ -13,5 +13,5 @@ var (
 )
 
 func (u *usersService) GetUser(userId int64) (*models.User, *utils.ApplicationError) {
-	return models.GetUser(userId)
+	return models.UserDao.GetUser(userId)
 }
