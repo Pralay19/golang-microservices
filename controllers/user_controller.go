@@ -26,7 +26,8 @@ func GetUser(c *gin.Context) {
 			StatusCode: http.StatusBadRequest,
 			Code:       "bad_request",
 		}
-		c.JSON(userErr.StatusCode, userErr)
+		// c.JSON(userErr.StatusCode, userErr)
+		utils.RespondError(c, userErr)
 		return
 	}
 	log.Printf("about to process %d", userId)
@@ -35,9 +36,11 @@ func GetUser(c *gin.Context) {
 	// now we need to send this user-id to a service inorder to work with the database
 	user, userErr := services.UsersService.GetUser(userId)
 	if userErr != nil {
-		c.JSON(userErr.StatusCode, userErr)
+		// c.JSON(userErr.StatusCode, userErr)
+		utils.RespondError(c, userErr)
 		return
 	}
 
-	c.JSON(http.StatusOK, user)
+	// c.JSON(http.StatusOK, user)
+	utils.Respond(c, http.StatusOK, user)
 }

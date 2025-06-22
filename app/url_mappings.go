@@ -6,5 +6,5 @@ import (
 
 func mapUrls() {
 	router.GET("/", controllers.ServeHome)
-	router.GET("/users", controllers.GetUser)
+	router.GET("/users/:user_id", controllers.GetUser)
 }
