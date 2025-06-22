@@ -5,7 +5,15 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
+
+var (
+	router *gin.Engine
+)
+
+func
 
 func StartUp() {
 	http.HandleFunc("/", controllers.ServeHome)
